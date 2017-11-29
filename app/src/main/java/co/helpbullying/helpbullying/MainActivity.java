@@ -1,8 +1,8 @@
 package co.helpbullying.helpbullying;
 
 
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.view.WindowManager;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
@@ -16,10 +16,16 @@ public class MainActivity extends AppCompatActivity  {
         setContentView(R.layout.activity_main);
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
                 WindowManager.LayoutParams.FLAG_FULLSCREEN);
-        WebView Wv = findViewById(R.id.webview);
+        Wv = findViewById(R.id.webview);
         Wv.getSettings().setJavaScriptEnabled(true);
         Wv.setWebViewClient(new WebViewClient());
-        Wv.loadUrl("http://helpbullying.co/");
+        Wv.loadUrl("http://novedades.helpbullying.co/");
     }
-
+    public void onBackPressed() {
+        if (Wv.canGoBack()) {
+            Wv.goBack();
+        } else {
+            super.onBackPressed();
+        }
+    }
 }
